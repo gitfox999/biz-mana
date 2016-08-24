@@ -34,7 +34,8 @@ public class EarnrateModel extends BaseModel {
 	}
 
 	public void update(Long id) {
-		save(getEarnRate());
+		getEarnRate().setId(id);
+		update(getEarnRate());
 	};
 
 	public void delete(Long id) {

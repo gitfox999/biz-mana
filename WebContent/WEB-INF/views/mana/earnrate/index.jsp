@@ -10,7 +10,7 @@ orderField="earnrateModel.orderField" orderDirection="earnrateModel.orderDirecti
 	<input type="hidden" name="earnrateModel.orderDirection" value="${earnrateModel.orderDirection}" />
 </form>
 <div class="pageHeader" style="display: none;">
-	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/member!index" method="POST">
+	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/earnrate!index" method="POST">
 	<div class="searchBar">
 <%-- ===================修改搜索条件===================== --%>
 		<ul class="searchContent" style="height: 80px">
@@ -44,22 +44,22 @@ orderField="earnrateModel.orderField" orderDirection="earnrateModel.orderDirecti
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="${webUrl}/notices/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加公告</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="earnrateModel.ids" href="${webUrl}/notices/0?_method=delete" class="delete"><span>批量删除</span></a></li>
+			<li><a class="add" href="${webUrl}/mana/earnrate/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加</span></a></li>
+			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="earnrateModel.ids" href="${webUrl}/mana/earnrate/0?_method=delete" class="delete"><span>批量删除</span></a></li>
 			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
 			<li class="line">line</li>
 		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
-	<table class="table" layoutH="60">
+	<table class="table" layoutH="75">
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="earnrateModel.ids" class="checkboxCtrl"></th>
 				<th width="100">大于</th>
 				<th width="100">小于</th>
-				<th width="30" orderField="sort" class="asc">优先级</th>
-				<th width="50">操作</th>
+				<th width="60" orderField="sort" class="asc">优先级</th>
+				<th width="150">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -71,7 +71,8 @@ orderField="earnrateModel.orderField" orderDirection="earnrateModel.orderDirecti
 				<td>${bm.eend}</td>			   
 				<td>${bm.sort}</td>			   
 				<td>
-					<a title="编辑" target="dialog" width="800" height="480" href="${webUrl}/ywdj/csdj/${bm.id}/edit" rel="roles_edit" class="btnEdit">出所</a>
+					<a title="删除" target="ajaxTodo" href="${webUrl}/mana/earnrate/${bm.id}?_method=DELETE" class="btnDel">删除</a>
+					<a title="编辑"  target="dialog" width="860" height="460" href="${webUrl}/mana/earnrate/${bm.id}/edit" rel="notices_edit" class="btnEdit">编辑</a>
 				</td>
 			</tr>
 			</c:forEach>		

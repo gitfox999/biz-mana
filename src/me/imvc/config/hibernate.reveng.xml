@@ -14,4 +14,5 @@
 <table-filter match-catalog="biz" match-name="ssc" />
 <table-filter match-catalog="biz" match-name="sscorder" />
 <table-filter match-catalog="biz" match-name="flow" />
+<table-filter match-catalog="biz" match-name="config" />
 </hibernate-reverse-engineering>

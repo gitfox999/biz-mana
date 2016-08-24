@@ -10,7 +10,7 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 	<input type="hidden" name="sscModel.orderDirection" value="${sscModel.orderDirection}" />
 </form>
 <div class="pageHeader">
-	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/member!index" method="POST">
+	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/ssc!index" method="POST">
 	<div class="searchBar">
 <%-- ===================修改搜索条件===================== --%>
 		<ul class="searchContent" style="height: 80px">

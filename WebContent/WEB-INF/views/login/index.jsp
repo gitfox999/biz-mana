@@ -26,11 +26,11 @@
 			<div class="loginForm">
 				<p>
 					<label>用户名：</label> <input type="text" id="j_username"
-						name='j_username' size="18" class="login_input" value="" />
+						name='j_username' size="18" class="login_input" value="admin" />
 				</p>
 				<p>
 					<label>密码：</label> <input type="password" id="j_password"
-						name='j_password' size="18" class="login_input" value="" />
+						name='j_password' size="18" class="login_input" value="admin" />
 				</p>
 					<p>
 						<label>验证码：</label>

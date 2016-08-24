@@ -184,7 +184,7 @@ var $weburl="${webUrl}";
 								<a>管理管理</a>
 								<ul>
 									<li><a href="${webUrl}/mana/member" target="navTab" rel="member">会员管理</a></li>
-									<li><a href="${webUrl}/mana/rate" target="navTab" rel="rate">赢率管理</a></li>
+									<li><a href="${webUrl}/mana/earnrate" target="navTab" rel="earnrate">赢率管理</a></li>
 									<li><a href="${webUrl}/mana/order" target="navTab" rel="order">下注查询</a></li>
 									<li><a href="${webUrl}/mana/ssc" target="navTab" rel="ssc">开奖结果</a></li>
 									<li><a href="${webUrl}/mana/flow" target="navTab" rel="zyry">交易流水</a></li>
@@ -192,21 +192,7 @@ var $weburl="${webUrl}";
 							</li>
 							<li><a>系统设置</a>
 								<ul>
-									<li><a>角色管理</a>
-								<ul>
-									<li><a href="${webUrl}/roles/new" target="dialog"
-										width="800" height="480" rel="roles_new">增加角色</a></li>
-									<li><a href="${webUrl}/roles" target="navTab" rel="roles">角色列表</a></li>
-								</ul>
-							</li>
-							<li><a>用户管理</a>
-								<ul>
-									<li><a href="${webUrl}/users/new" target="dialog"
-										width="800" height="480" rel="users_new">增加用户</a></li>
-									<li><a href="${webUrl}/users" target="navTab" rel="users">用户列表</a></li>
-								</ul></li> 
-								<li><a href="${webUrl}/kss/zyry/0/toConfig" target="dialog"
-										width="800" height="480" rel="config">系统设置</a></li>
+								<li><a href="${webUrl}/mana/config" target="navTab" rel="config">系统设置</a></li>
 								</ul>
 							</li>
 						</ul>

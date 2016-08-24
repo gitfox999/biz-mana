@@ -1,29 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="pageContent">
-	<form method="post" action="${webUrl}/ywdj/csdj" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
-			<input name="csdjModel.ksszyry.id" type="hidden" value="${csdjModel.ksszyry.id}"/>
+	<form method="post" action="${webUrl}/mana/earnrate<c:if test="${earnrateModel.earnRate.id != null && earnrateModel.earnRate.id != ''}">
+			/${earnrateModel.earnRate.id}</c:if>" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<c:if test="${earnrateModel.earnRate.id != null && earnrateModel.earnRate.id != ''}">
+			<input name="_method" type="hidden" value="put" /></c:if>
+			<input name="earnrateModel.earnRate.id" type="hidden" value="${earnrateModel.earnRate.id}"/>
 			<div class="pageFormContent" layoutH="56">
 			<p>
-				<label>出所日期：</label>
-				<input name="csdjModel.ksscsdj.csrq" class="required"  type="text" size="30" value="${csdjModel.ksscsdj.csrq}"/>
+				<label>大于：</label>
+				<input name="earnrateModel.earnRate.efrom" class="required"  type="text" size="30" value="${earnrateModel.earnRate.efrom}"/>
 			</p>
 			<p>
-				<label>负责民警警号：</label>
-				<input name="csdjModel.ksscsdj.fzmjjh" class="required" type="text" size="30" value="${csdjModel.ksscsdj.fzmjjh}"/>
+				<label>小于：</label>
+				<input name="earnrateModel.earnRate.eend" class="required" type="text" size="30" value="${earnrateModel.earnRate.eend}"/>
 			</p>
 			<p>
-				<label>出所说明：</label>
-				<input name="csdjModel.ksscsdj.cssm" type="text" size="30" value="${csdjModel.ksscsdj.cssm}"/>
-			</p>
-			<p>
-				<label>姓名：</label>
-				<input name="csdjModel.ksscsdj.xm" type="text" size="30" value="${csdjModel.ksscsdj.xm}"/>
-			</p>
-			<p>
-				<label>身份证号：</label>
-				<input name="csdjModel.ksscsdj.sfzh" type="text" size="30" value="${csdjModel.ksscsdj.sfzh}"/>
+				<label>优先级：</label>
+				<input name="earnrateModel.earnRate.sort" type="text" size="30" value="${earnrateModel.earnRate.sort}"/>
 			</p>
 			</div>
 			<div class="formBar">

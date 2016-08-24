@@ -22,6 +22,8 @@ public class EarnrateController extends BaseController {
 
 	@Override
 	public String index() {
+		getEarnrateModel().setOrderField("sort");
+		getEarnrateModel().setOrderDirection("asc");
 		getEarnrateModel().getPageData("EarnRate");
 		return render("earnrate/index");
 	}
@@ -58,6 +60,7 @@ public class EarnrateController extends BaseController {
 
 	@Override
 	public String destroy() {
-		return successMsg("删除成功");
+		getEarnrateModel().delete(getId());
+		return successMsg("删除成功","earnrate");
 	}
 }

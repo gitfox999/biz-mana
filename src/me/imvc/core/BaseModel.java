@@ -186,7 +186,14 @@ public abstract class BaseModel{
 	public List getPageData(String entityName) {
 		if (getSearchParams() == null) {
 			setTotalCount(this.getCount(entityName, "1=1", " where "));
-			setDataList(this.findByHqlWhere(entityName, "1=1 order by id desc", " where "));
+			String orderSql = " order by id desc";
+			if (getOrderField() != null && getOrderDirection() != null
+					&& !getOrderField().isEmpty()
+					&& !getOrderDirection().isEmpty()) {
+				orderSql = " order by " + getOrderField() + " "
+						+ getOrderDirection();
+			}
+			setDataList(this.findByHqlWhere(entityName, "1=1 "+orderSql, " where "));
 		} else {// key to hql
 			String from = null;			
 			String where2= null;
