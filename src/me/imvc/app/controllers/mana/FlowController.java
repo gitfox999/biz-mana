@@ -41,6 +41,8 @@ public class FlowController extends BaseController {
 				getFlowModel().getSearchParams().put("and_money_le", moneyTmp);
 			}
 		}
+		getFlowModel().setOrderField("ts");
+		getFlowModel().setOrderDirection("desc");
 		getFlowModel().getPageData("Flow");
 		return render("/flow/index");
 	}

@@ -22,20 +22,6 @@ public class SscController extends BaseController {
 
 	@Override
 	public String index() {
-		if(getSscModel().getSearchParams() != null){
-			String le = ((String[])getSscModel().getSearchParams().get("and_money_le"))[0].toString();
-			String ge = ((String[])getSscModel().getSearchParams().get("and_money_ge"))[0].toString();
-			if(!"".equals(ge.trim())){
-				double money = Double.valueOf(ge)*100;
-				String[] moneyTmp = {(int)money+""};
-				getSscModel().getSearchParams().put("and_money_ge", moneyTmp);
-			}
-			if(!"".equals(le.trim())){
-				double money = Double.valueOf(le)*100;
-				String[] moneyTmp = {(int)money+""};
-				getSscModel().getSearchParams().put("and_money_le", moneyTmp);
-			}
-		}
 		getSscModel().getPageData("Ssc");
 		return render("/ssc/index");
 	}

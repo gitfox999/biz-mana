@@ -31,61 +31,61 @@ public class Flow implements java.io.Serializable {
 		this.id = id;
 	}
 	public Member getMember() {
-		return member;
+		return this.member;
 	}
 	public void setMember(Member member) {
 		this.member = member;
 	}
 	public Integer getType() {
-		return type;
+		return this.type;
 	}
 	public void setType(Integer type) {
 		this.type = type;
 	}
 	public Integer getMoney() {
-		return money;
+		return this.money;
 	}
 	public void setMoney(Integer money) {
 		this.money = money;
 	}
 	public String getTocard() {
-		return tocard;
+		return this.tocard;
 	}
 	public void setTocard(String tocard) {
 		this.tocard = tocard;
 	}
 	public String getFromcard() {
-		return fromcard;
+		return this.fromcard;
 	}
 	public void setFromcard(String fromcard) {
 		this.fromcard = fromcard;
 	}
 	public String getTobank() {
-		return tobank;
+		return this.tobank;
 	}
 	public void setTobank(String tobank) {
 		this.tobank = tobank;
 	}
 	public String getFrombank() {
-		return frombank;
+		return this.frombank;
 	}
 	public void setFrombank(String frombank) {
 		this.frombank = frombank;
 	}
 	public Integer getDirction() {
-		return dirction;
+		return this.dirction;
 	}
 	public void setDirction(Integer dirction) {
 		this.dirction = dirction;
 	}
 	public Date getTs() {
-		return ts;
+		return this.ts;
 	}
 	public void setTs(Date ts) {
 		this.ts = ts;
 	}
 	public String getRemark() {
-		return remark;
+		return this.remark;
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;

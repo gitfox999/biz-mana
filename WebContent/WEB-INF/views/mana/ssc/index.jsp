@@ -13,32 +13,15 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/ssc!index" method="POST">
 	<div class="searchBar">
 <%-- ===================修改搜索条件===================== --%>
-		<ul class="searchContent" style="height: 80px">
+		<ul class="searchContent" >
 			<li>
-				<label>用户名：</label>
-				<input type="text" name="sscModel.searchParams.name_like" value="${sscModel.searchParams.name_like[0]}"/>
-			</li>
-			<li>
-				<label>实名：</label>
-				<input type="text" name="sscModel.searchParams.and_trueName_like" value="${sscModel.searchParams.and_trueName_like[0]}"/>
-			</li>
-			<li>
-				<label>电话：</label>
-				<input type="text" name="sscModel.searchParams.and_tel_like" value="${sscModel.searchParams.and_tel_like[0]}"/>
-			</li>
-			<li>
-				<label>卡号：</label>
-				<input type="text" name="sscModel.searchParams.and_card_like" value="${sscModel.searchParams.and_card_like[0]}"/>
+				<label>号码：</label>
+				<input type="text" name="sscModel.searchParams.and_no_like" value="${sscModel.searchParams.and_no_like[0]}"/>
 			</li>
 			<li style="width: 500px;">
-				<label>注册时间：</label>
-				<input name="sscModel.searchParams.and_addTs_ge_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${sscModel.searchParams._and_addTs_ge_date[0] }" placeholder="开始时间"/>
-				<input name="sscModel.searchParams.and_addTs_le_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${sscModel.searchParams._and_addTs_le_date[0] }" placeholder="结束时间"/>
-			</li>
-			<li style="width: 500px;">
-				<label>余额：</label>
-				<input name="sscModel.searchParams.and_money_ge" type="text" value="<c:if test="${sscModel.searchParams.and_money_ge[0] != null && sscModel.searchParams.and_money_ge[0] != ''}">${sscModel.searchParams.and_money_ge[0]/100 }</c:if>" placeholder="大于"/>
-				<input name="sscModel.searchParams.and_money_le" type="text" value="<c:if test="${sscModel.searchParams.and_money_le[0] != null && sscModel.searchParams.and_money_le[0] != ''}">${sscModel.searchParams.and_money_le[0]/100 }</c:if>" placeholder="小于"/>
+				<label>时间：</label>
+				<input name="sscModel.searchParams.and_time_ge_string" type="text" class="date" format="yyyy-MM-dd HH:mm:ss" size="20" value="${sscModel.searchParams.and_time_ge_string[0] }" placeholder="开始时间"/>
+				<input name="sscModel.searchParams.and_time_le_string" type="text" class="date" format="yyyy-MM-dd HH:mm:ss" size="20" value="${sscModel.searchParams.and_time_le_string[0] }" placeholder="结束时间"/>
 			</li>
 		</ul>
 <%-- ===================修改搜索条件===================== --%>
@@ -70,15 +53,10 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="${webUrl}/notices/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加公告</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="sscModel.ids" href="${webUrl}/notices/0?_method=delete" class="delete"><span>批量删除</span></a></li>
-			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
-			<li class="line">line</li>
-		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
-	<table class="table" layoutH="190">
+	<table class="table" layoutH="137">
 		<thead>
 			<tr>
 				<th width="100">开奖期号</th>
@@ -88,7 +66,7 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 				<th width="80">盈利百分比</th>
 				<th width="150">开奖时间</th>
 				<th width="350" >投注时间</th>
-				<th width="50">操作</th>
+				<!-- <th width="50">操作</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -102,9 +80,9 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 				<td>${bm.rate}</td>
 				<td><fmt:formatDate value="${bm.time }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td><fmt:formatDate value="${bm.stime }" pattern="yyyy-MM-dd HH:mm:ss"/>至<fmt:formatDate value="${bm.etime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td>
+				<%-- <td>
 					<a title="出所" target="dialog" width="800" height="480" href="${webUrl}/ywdj/csdj/${bm.id}/edit" rel="roles_edit" class="btnEdit">出所</a>
-				</td>
+				</td> --%>
 			</tr>
 			</c:forEach>		
 		</tbody>

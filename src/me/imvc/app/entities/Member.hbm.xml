@@ -35,5 +35,11 @@
         <property name="updateTs" type="timestamp">
             <column name="update_ts" length="19" />
         </property>
+        <set name="flows" table="flow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="memid" />
+            </key>
+            <one-to-many class="me.imvc.app.entities.Flow" />
+        </set>
     </class>
 </hibernate-mapping>

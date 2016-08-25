@@ -23,12 +23,13 @@ public class Member implements java.io.Serializable {
 	private String pwd;
 	private Date addTs;
 	private Date updateTs;
+	private Set<Flow> flows = new HashSet<Flow>(0);
 
 	public Member() {
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -36,7 +37,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -44,7 +45,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getTel() {
-		return tel;
+		return this.tel;
 	}
 
 	public void setTel(String tel) {
@@ -52,7 +53,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getCard() {
-		return card;
+		return this.card;
 	}
 
 	public void setCard(String card) {
@@ -60,7 +61,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getTrueName() {
-		return trueName;
+		return this.trueName;
 	}
 
 	public void setTrueName(String trueName) {
@@ -68,7 +69,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getBank() {
-		return bank;
+		return this.bank;
 	}
 
 	public void setBank(String bank) {
@@ -76,7 +77,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public Integer getMoney() {
-		return money;
+		return this.money;
 	}
 
 	public void setMoney(Integer money) {
@@ -84,7 +85,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public String getPwd() {
-		return pwd;
+		return this.pwd;
 	}
 
 	public void setPwd(String pwd) {
@@ -92,7 +93,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public Date getAddTs() {
-		return addTs;
+		return this.addTs;
 	}
 
 	public void setAddTs(Date addTs) {
@@ -100,11 +101,19 @@ public class Member implements java.io.Serializable {
 	}
 
 	public Date getUpdateTs() {
-		return updateTs;
+		return this.updateTs;
 	}
 
 	public void setUpdateTs(Date updateTs) {
 		this.updateTs = updateTs;
+	}
+
+	public Set<Flow> getFlows() {
+		return this.flows;
+	}
+
+	public void setFlows(Set<Flow> flows) {
+		this.flows = flows;
 	}
 
 	

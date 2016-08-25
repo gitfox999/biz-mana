@@ -10,33 +10,36 @@ orderField="orderModel.orderField" orderDirection="orderModel.orderDirection" me
 	<input type="hidden" name="orderModel.orderDirection" value="${orderModel.orderDirection}" />
 </form>
 <div class="pageHeader">
-	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/member!index" method="POST">
+	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/order!index" method="POST">
 	<div class="searchBar">
 <%-- ===================修改搜索条件===================== --%>
 		<ul class="searchContent" style="height: 80px">
 			<li>
 				<label>用户名：</label>
-				<input type="text" name="orderModel.searchParams.name_like" value="${orderModel.searchParams.name_like[0]}"/>
+				<input type="text" name="orderModel.searchParams.memid_eq" value="${orderModel.searchParams.memid_eq[0]}"/>
 			</li>
 			<li>
-				<label>实名：</label>
-				<input type="text" name="orderModel.searchParams.and_trueName_like" value="${orderModel.searchParams.and_trueName_like[0]}"/>
+				<label>输赢情况：</label>
+				<select class="combox" name="orderModel.searchParams.and_iswin_eq">
+					<option value="${orderModel.searchParams.and_iswin_eq[0]}"></option>
+					<option value="">全部</option>
+					<option value="-1">未开奖</option>
+					<option value="0">输</option>
+					<option value="1">赢</option>
+					<option value="2">作废</option>
+				</select>
 			</li>
 			<li>
-				<label>电话：</label>
-				<input type="text" name="orderModel.searchParams.and_tel_like" value="${orderModel.searchParams.and_tel_like[0]}"/>
-			</li>
-			<li>
-				<label>卡号：</label>
-				<input type="text" name="orderModel.searchParams.and_card_like" value="${orderModel.searchParams.and_card_like[0]}"/>
+				<label>下注期数：</label>
+				<input type="text" name="orderModel.searchParams.and_qihao_like" value="${orderModel.searchParams.and_qihao_like[0]}"/>
 			</li>
 			<li style="width: 500px;">
-				<label>注册时间：</label>
-				<input name="orderModel.searchParams.and_addTs_ge_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${orderModel.searchParams._and_addTs_ge_date[0] }" placeholder="开始时间"/>
-				<input name="orderModel.searchParams.and_addTs_le_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${orderModel.searchParams._and_addTs_le_date[0] }" placeholder="结束时间"/>
+				<label>下注时间：</label>
+				<input name="orderModel.searchParams.and_otime_ge_string" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${orderModel.searchParams.and_otime_ge_string[0] }" placeholder="开始时间"/>
+				<input name="orderModel.searchParams.and_otime_le_string" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${orderModel.searchParams.and_otime_le_string[0] }" placeholder="结束时间"/>
 			</li>
 			<li style="width: 500px;">
-				<label>余额：</label>
+				<label>下注金额：</label>
 				<input name="orderModel.searchParams.and_money_ge" type="text" value="<c:if test="${orderModel.searchParams.and_money_ge[0] != null && orderModel.searchParams.and_money_ge[0] != ''}">${orderModel.searchParams.and_money_ge[0]/100 }</c:if>" placeholder="大于"/>
 				<input name="orderModel.searchParams.and_money_le" type="text" value="<c:if test="${orderModel.searchParams.and_money_le[0] != null && orderModel.searchParams.and_money_le[0] != ''}">${orderModel.searchParams.and_money_le[0]/100 }</c:if>" placeholder="小于"/>
 			</li>
@@ -70,11 +73,6 @@ orderField="orderModel.orderField" orderDirection="orderModel.orderDirection" me
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="${webUrl}/notices/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加公告</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="orderModel.ids" href="${webUrl}/notices/0?_method=delete" class="delete"><span>批量删除</span></a></li>
-			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
-			<li class="line">line</li>
-		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>

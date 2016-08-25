@@ -10,33 +10,40 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 	<input type="hidden" name="flowModel.orderDirection" value="${flowModel.orderDirection}" />
 </form>
 <div class="pageHeader">
-	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/member!index" method="POST">
+	<form class="advancedSearchForm" rel="pagerForm"  onsubmit="return navTabSearch(this);" action="${webUrl}/mana/flow!index" method="POST">
 	<div class="searchBar">
 <%-- ===================修改搜索条件===================== --%>
 		<ul class="searchContent" style="height: 80px">
 			<li>
 				<label>用户名：</label>
-				<input type="text" name="flowModel.searchParams.name_like" value="${flowModel.searchParams.name_like[0]}"/>
+				<input type="text" name="flowModel.searchParams.and_memid_like" value="${flowModel.searchParams.and_memid_like[0]}"/>
 			</li>
 			<li>
-				<label>实名：</label>
-				<input type="text" name="flowModel.searchParams.and_trueName_like" value="${flowModel.searchParams.and_trueName_like[0]}"/>
+				<label>流水类别：</label>
+				<select class="combox" name="flowModel.searchParams.and_type_eq">
+					<option value="${flowModel.searchParams.and_type_eq[0]}"></option>
+					<option value="">全部</option>
+					<option value="0">充值</option>
+					<option value="1">提现</option>
+					<option value="2">下注</option>
+					<option value="3">赢返</option>
+				</select>
 			</li>
 			<li>
-				<label>电话：</label>
-				<input type="text" name="flowModel.searchParams.and_tel_like" value="${flowModel.searchParams.and_tel_like[0]}"/>
+				<label>卡款卡号：</label>
+				<input type="text" name="flowModel.searchParams.and_tocard_like" value="${flowModel.searchParams.and_tocard_like[0]}"/>
 			</li>
 			<li>
-				<label>卡号：</label>
-				<input type="text" name="flowModel.searchParams.and_card_like" value="${flowModel.searchParams.and_card_like[0]}"/>
+				<label>收款卡号：</label>
+				<input type="text" name="flowModel.searchParams.and_fromcard_like" value="${flowModel.searchParams.and_fromcard_like[0]}"/>
 			</li>
 			<li style="width: 500px;">
-				<label>注册时间：</label>
-				<input name="flowModel.searchParams.and_addTs_ge_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${flowModel.searchParams._and_addTs_ge_date[0] }" placeholder="开始时间"/>
-				<input name="flowModel.searchParams.and_addTs_le_date" type="text" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" size="20" value="${flowModel.searchParams._and_addTs_le_date[0] }" placeholder="结束时间"/>
+				<label>时间：</label>
+				<input name="flowModel.searchParams.and_ts_ge_string" type="text" class="date" format="yyyy-MM-dd HH:mm:ss" size="20" value="${flowModel.searchParams.and_ts_ge_string[0] }" placeholder="开始时间"/>
+				<input name="flowModel.searchParams.and_ts_le_string" type="text" class="date" format="yyyy-MM-dd HH:mm:ss" size="20" value="${flowModel.searchParams.and_ts_le_string[0] }" placeholder="结束时间"/>
 			</li>
 			<li style="width: 500px;">
-				<label>余额：</label>
+				<label>金额：</label>
 				<input name="flowModel.searchParams.and_money_ge" type="text" value="<c:if test="${flowModel.searchParams.and_money_ge[0] != null && flowModel.searchParams.and_money_ge[0] != ''}">${flowModel.searchParams.and_money_ge[0]/100 }</c:if>" placeholder="大于"/>
 				<input name="flowModel.searchParams.and_money_le" type="text" value="<c:if test="${flowModel.searchParams.and_money_le[0] != null && flowModel.searchParams.and_money_le[0] != ''}">${flowModel.searchParams.and_money_le[0]/100 }</c:if>" placeholder="小于"/>
 			</li>
@@ -70,10 +77,6 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="${webUrl}/notices/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加公告</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="flowModel.ids" href="${webUrl}/notices/0?_method=delete" class="delete"><span>批量删除</span></a></li>
-			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
-			<li class="line">line</li>
 		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
 	</div>
@@ -82,17 +85,17 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 		<thead>
 			<tr>
 				<th width="100">会员名称</th> 
-				<th width="40">流水类别</th>
+				<th width="60">流水类别</th>
 				<th width="160">时间</th>
 				<th width="50">金额</th>
 				<th width="70">流水方向</th>
-				<th width="300">备注</th>
+				<th width="500">备注</th>
 				<th width="60">转出卡号</th>
 				<th width="60">转出银行</th>
 				<th width="60">转入卡号</th>
 				<th width="60">转入银行</th>
-				<th width="50">操作</th>
-			</tr>
+<!-- 				<th width="50">操作</th>
+ -->			</tr>
 		</thead>
 		<tbody>
 			<c:set scope="page" var="num" value="1"></c:set>
@@ -112,9 +115,9 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 				<td>${bm.tobank}</td>
 				<td>${bm.fromcard}</td>
 				<td>${bm.frombank}</td>
-				<td>
+				<%-- <td>
 					<a title="出所" target="dialog" width="800" height="480" href="${webUrl}/ywdj/csdj/${bm.id}/edit" rel="roles_edit" class="btnEdit">出所</a>
-				</td>
+				</td> --%>
 			</tr>
 			</c:forEach>		
 		</tbody>

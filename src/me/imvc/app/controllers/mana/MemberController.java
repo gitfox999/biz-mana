@@ -37,6 +37,8 @@ public class MemberController extends BaseController {
 				getMemberModel().getSearchParams().put("and_money_le", moneyTmp);
 			}
 		}
+		getMemberModel().setOrderField("add_ts");
+		getMemberModel().setOrderDirection("desc");
 		getMemberModel().getPageData("Member");
 		return render("member/index");
 	}

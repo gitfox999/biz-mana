@@ -216,27 +216,21 @@ public abstract class BaseModel{
 				if (!value_a[0].isEmpty()) {
 					String field = key.replace("and_", " and ")
 							.replace("ro_", " or ").replace("not_", " not ")
-							.replace("_is", " is ").replace("_zkh_", "(").replace("_ykh", ")")
+							.replace("_zkh_", "(").replace("_ykh", ")")
 							.replace("_dot_", ".").replace("_like", " like \'%")
 							.replace("_eq", "=").replace("_ne", "!=")
 							.replace("_lt", "<").replace("_gt", ">")
-							.replace("_le", "<=").replace("_ge", ">=").replace("_date", " to_date(\'")
+							.replace("_le", "<=").replace("_ge", ">=").replace("_date", "FUNCTION(\'date_format\',\'")
 							.replace("_string", "\'").replace("_number", " ");
 					
 					if (field.charAt(field.length() - 1) == '\'') {
-						if(field.charAt(field.length() - 2) == '('){
-							field += value_a[0] + "\',\'yyyy-MM-dd HH24:MI:SS')";
+						if(field.charAt(field.length() - 2) == ','){
+							field += value_a[0] + "\', \'%Y-%m-%d %H:%i:%s\')";
 						}else{
 							field += value_a[0] + "\'";
 						}
 					}else if(field.charAt(field.length() - 1) == '%') {
 						field += value_a[0] + "%\'";
-					}else if(key.indexOf("_is")>0){
-						if("notnull".equals(value_a[0])){
-							field += "not null";
-						}if("null".equals(value_a[0])){
-							field += " null";
-						}
 					} else {
 						field += value_a[0];
 					}
