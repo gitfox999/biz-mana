@@ -1,5 +1,6 @@
 package me.imvc.app.controllers.mana;
 
+import me.imvc.app.models.mana.FlowModel;
 import me.imvc.app.models.mana.MemberModel;
 import me.imvc.core.BaseController;
 
@@ -11,6 +12,7 @@ public class MemberController extends BaseController {
 	private static final long serialVersionUID = 1L;
 	
 	private MemberModel memberModel;
+	private FlowModel flowModel;
 
 	public MemberModel getMemberModel() {
 		return memberModel;
@@ -19,7 +21,14 @@ public class MemberController extends BaseController {
 	public void setMemberModel(MemberModel memberModel) {
 		this.memberModel = memberModel;
 	}
+	
+	public FlowModel getFlowModel() {
+		return flowModel;
+	}
 
+	public void setFlowModel(FlowModel flowModel) {
+		this.flowModel = flowModel;
+	}
 
 	@Override
 	public String index() {
@@ -76,5 +85,9 @@ public class MemberController extends BaseController {
 	@Override
 	public String destroy() {
 		return successMsg("删除成功");
+	}
+	
+	public String topay(){
+		return render("/member/pay");
 	}
 }

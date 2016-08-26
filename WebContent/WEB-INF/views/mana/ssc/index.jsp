@@ -77,7 +77,7 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 				<td>${bm.no}</td>			   
 				<td><fmt:formatNumber value="${bm.income/100}" pattern="0.00"/></td>			   
 				<td><fmt:formatNumber value="${bm.allwin/100}" pattern="0.00"/></td>
-				<td>${bm.rate}</td>
+				<td><fmt:formatNumber value="${bm.rate/100}" pattern="0.00"/></td>
 				<td><fmt:formatDate value="${bm.time }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td><fmt:formatDate value="${bm.stime }" pattern="yyyy-MM-dd HH:mm:ss"/>至<fmt:formatDate value="${bm.etime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<%-- <td>

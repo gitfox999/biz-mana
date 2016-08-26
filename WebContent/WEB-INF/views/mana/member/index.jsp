@@ -107,7 +107,7 @@ orderField="memberModel.orderField" orderDirection="memberModel.orderDirection" 
 				<td>${bm.addTs}</td>
 				<td>${bm.updateTs}</td>
 				<td>
-					<a title="出所" target="dialog" width="800" height="480" href="${webUrl}/ywdj/csdj/${bm.id}/edit" rel="roles_edit" class="btnEdit">出所</a>
+					<a title="${bm.name}---充值" target="dialog" width="800" height="480" href="${webUrl}/mana/member/${bm.id}/topay" rel="pay_edit" class="btnEdit">充值</a>
 				</td>
 			</tr>
 			</c:forEach>		
