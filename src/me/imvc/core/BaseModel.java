@@ -32,6 +32,8 @@ public abstract class BaseModel{
 	private long totalCount;
 	private String orderDirection;
 	private String orderField;
+	private double[] sum;
+	private String[] sumField;
 
 	// 分页变量
 
@@ -44,6 +46,22 @@ public abstract class BaseModel{
 		}
 		}
 		return id;
+	}
+	
+	public double[] getSum() {
+		return sum;
+	}
+
+	public void setSum(double[] sum) {
+		this.sum = sum;
+	}
+	
+	public String[] getSumField() {
+		return sumField;
+	}
+
+	public void setSumField(String[] sumField) {
+		this.sumField = sumField;
 	}
 
 	public String getNotUpdate() {
@@ -194,6 +212,7 @@ public abstract class BaseModel{
 						+ getOrderDirection();
 			}
 			setDataList(this.findByHqlWhere(entityName, "1=1 "+orderSql, " where "));
+			setSum(this.getSum(entityName,"1=1", " where "));
 		} else {// key to hql
 			String from = null;			
 			String where2= null;
@@ -267,7 +286,6 @@ public abstract class BaseModel{
 				where += " where " + where2;
 			}
 			
-			System.out.println("sql:"+where);
 			
 			if (getOrderField() != null && getOrderDirection() != null
 					&& !getOrderField().isEmpty()
@@ -280,9 +298,11 @@ public abstract class BaseModel{
 			if (from == null) {
 				setTotalCount(this.getCount(entityName, where, " where "));
 				setDataList(this.findByHqlWhere(entityName, where, " where "));
+				setSum(this.getSum(entityName, where, " where "));
 			} else {
 				setTotalCount(this.getCount(from, where, " and "));
 				setDataList(this.findByHqlWhere(from, where, " and "));
+				setSum(this.getSum(from, where, " and "));
 			}
 
 		}
@@ -291,13 +311,44 @@ public abstract class BaseModel{
 
 	public long getCount(String tableName, String where ,String isAnd) {
 		String sql = "select count(*) from " + tableName + " "+isAnd+" " + where;
-		System.out.println(sql);
 		return ((Long) this
 				.getHibernateTemplate()
 				.getSession()
 				.createQuery(
 						sql)
 				.iterate().next()).longValue();
+	}
+	
+	public double[] getSum(String tableName, String where ,String isAnd) {
+		if(sumField != null && sumField.length > 0){
+			String fields = "";
+			for(int i =0;i<sumField.length;i++){
+				fields += "sum("+sumField[i]+")";
+				if(i!= sumField.length-1){
+					fields += ",";
+				}
+			}
+			String sql = "select "+fields+" from " + tableName + " "+isAnd+" " + where;
+			Object obj = this.getHibernateTemplate().getSession().createQuery(sql).iterate().next();
+			double[] dd = new double[sumField.length];
+			if(obj == null){
+				for(int i =0;i<sumField.length;i++){
+					dd[i] = 0;
+				}
+			}else{
+				if(sumField.length == 1){
+					dd[0] = (Long)obj;
+				}else{
+					Object[] objTmp = (Object[])obj;
+					for(int i =0;i<sumField.length;i++){
+						dd[i] = (Long)objTmp[i];
+					}
+				}
+			}
+			return dd;
+		}else{
+			return null;
+		}
 	}
 
 	@SuppressWarnings("rawtypes")

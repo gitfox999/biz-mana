@@ -76,7 +76,7 @@ orderField="orderModel.orderField" orderDirection="orderModel.orderDirection" me
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
-	<table class="table" layoutH="190">
+	<table class="table" layoutH="220">
 		<thead>
 			<tr>
 				<th width="100">会员名称</th> 
@@ -95,7 +95,7 @@ orderField="orderModel.orderField" orderDirection="orderModel.orderDirection" me
 				<td>${bm.member.name}</td>			 
 				<td>${bm.detail}</td>	
 				<td><fmt:formatDate value="${bm.otime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>			   
-				<td><fmt:formatNumber value="${bm.money/100}" pattern="0.00"/></td>
+				<td style="text-align: right;"><fmt:formatNumber value="${bm.money/100}" pattern="0.00"/></td>
 				<td>${bm.qihao}</td>
 				<td><c:if test="${bm.iswin == -1}">未开奖</c:if>
 				<c:if test="${bm.iswin == 0}">输</c:if>
@@ -108,6 +108,23 @@ orderField="orderModel.orderField" orderDirection="orderModel.orderDirection" me
 			</c:forEach>		
 		</tbody>
 	</table>
+	<div class="panelBar">
+		<table class="table">
+		<thead>
+			<tr>
+				<th width="100">合计</th> 
+				<th width="100"></th>
+				<th width="160"></th>
+				<th width="100" style="text-align: right;"><fmt:formatNumber value="${orderModel.sum[0]/100}" pattern="0.00"/></th>
+				<th width="100"></th>
+				<th width="60"></th>
+				<th width="50"></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
 <%-- ===================修改table显示内容===================== --%>
 	<div class="panelBar">
 		<div class="pages">

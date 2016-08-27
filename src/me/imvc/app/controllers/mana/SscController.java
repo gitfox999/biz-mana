@@ -22,6 +22,12 @@ public class SscController extends BaseController {
 
 	@Override
 	public String index() {
+		if(getSscModel().getOrderField() == null){
+			getSscModel().setOrderField("time");
+			getSscModel().setOrderDirection("desc");
+		}
+		String[] ff = {"income","allwin"};
+		getSscModel().setSumField(ff);
 		getSscModel().getPageData("Ssc");
 		return render("/ssc/index");
 	}

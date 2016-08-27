@@ -81,13 +81,13 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
-	<table class="table" layoutH="190">
+	<table class="table" layoutH="220">
 		<thead>
 			<tr>
 				<th width="100">会员名称</th> 
 				<th width="60">流水类别</th>
 				<th width="160">时间</th>
-				<th width="50">金额</th>
+				<th width="90">金额</th>
 				<th width="70">流水方向</th>
 				<th width="500">备注</th>
 				<th width="60">转出卡号</th>
@@ -107,14 +107,14 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 				<c:if test="${bm.type == 2}">下注</c:if>
 				<c:if test="${bm.type == 3}">赢返</c:if></td>	
 				<td><fmt:formatDate value="${bm.ts }" pattern="yyyy-MM-dd HH:mm:ss"/></td>			   
-				<td><fmt:formatNumber value="${bm.money/100}" pattern="0.00"/></td>
+				<td style="text-align: right;"><fmt:formatNumber value="${bm.money/100}" pattern="0.00"/></td>
 				<td><c:if test="${bm.dirction == 0}">收</c:if>
 				<c:if test="${bm.dirction == 1}">支</c:if></td>
 				<td>${bm.remark}</td>
-				<td>${bm.tocard}</td>
-				<td>${bm.tobank}</td>
 				<td>${bm.fromcard}</td>
 				<td>${bm.frombank}</td>
+				<td>${bm.tocard}</td>
+				<td>${bm.tobank}</td>
 				<%-- <td>
 					<a title="出所" target="dialog" width="800" height="480" href="${webUrl}/ywdj/csdj/${bm.id}/edit" rel="roles_edit" class="btnEdit">出所</a>
 				</td> --%>
@@ -123,6 +123,27 @@ orderField="flowModel.orderField" orderDirection="flowModel.orderDirection" meth
 		</tbody>
 	</table>
 <%-- ===================修改table显示内容===================== --%>
+<div class="panelBar">
+		<table class="table">
+		<thead>
+			<tr>
+				<th width="100">合计</th> 
+				<th width="60"></th>
+				<th width="160"></th>
+				<th width="90" style="text-align: right;"><fmt:formatNumber value="${flowModel.sum[0]/100}" pattern="0.00"/></th>
+				<th width="70"></th>
+				<th width="500"></th>
+				<th width="60"></th>
+				<th width="60"></th>
+				<th width="60"></th>
+				<th width="60"></th>
+<!-- 				<th width="50">操作</th>
+ -->			</tr>	
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
 	<div class="panelBar">
 		<div class="pages">
 			<span>显示</span>

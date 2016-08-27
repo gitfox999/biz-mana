@@ -54,8 +54,8 @@ orderField="configModel.orderField" orderDirection="configModel.orderDirection" 
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="configModel.ids" class="checkboxCtrl"></th>
-				<th width="100">名称</th>
-				<th width="100">值</th>
+				<th width="200">名称</th>
+				<th width="500">值</th>
 				<th width="150">操作</th>
 			</tr>
 		</thead>
@@ -67,7 +67,7 @@ orderField="configModel.orderField" orderDirection="configModel.orderDirection" 
 				<td>${bm.name}</td>			   
 				<td>${bm.value}</td>			   
 				<td>
-					<a title="删除" target="ajaxTodo" href="${webUrl}/mana/config/${bm.id}?_method=DELETE" class="btnDel">删除</a>
+					<!--  <a title="删除" target="ajaxTodo" href="${webUrl}/mana/config/${bm.id}?_method=DELETE" class="btnDel">删除</a>-->
 					<a title="编辑"  target="dialog" width="860" height="460" href="${webUrl}/mana/config/${bm.id}/edit" rel="notices_edit" class="btnEdit">编辑</a>
 				</td>
 			</tr>

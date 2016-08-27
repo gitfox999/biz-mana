@@ -40,8 +40,12 @@ public class OrderController extends BaseController {
 				getOrderModel().getSearchParams().put("and_money_le", moneyTmp);
 			}
 		}
-		getOrderModel().setOrderField("otime");
-		getOrderModel().setOrderDirection("desc");
+		if(getOrderModel().getOrderField() == null){
+			getOrderModel().setOrderField("otime");
+			getOrderModel().setOrderDirection("desc");
+		}
+		String[] ff = {"money"};
+		getOrderModel().setSumField(ff);
 		getOrderModel().getPageData("Sscorder");
 		return render("/order/index");
 	}

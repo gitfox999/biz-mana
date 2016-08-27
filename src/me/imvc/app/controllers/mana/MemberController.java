@@ -1,5 +1,7 @@
 package me.imvc.app.controllers.mana;
 
+import me.imvc.app.entities.Flow;
+import me.imvc.app.entities.Member;
 import me.imvc.app.models.mana.FlowModel;
 import me.imvc.app.models.mana.MemberModel;
 import me.imvc.core.BaseController;
@@ -46,8 +48,10 @@ public class MemberController extends BaseController {
 				getMemberModel().getSearchParams().put("and_money_le", moneyTmp);
 			}
 		}
-		getMemberModel().setOrderField("add_ts");
-		getMemberModel().setOrderDirection("desc");
+		if(getMemberModel().getOrderField() == null){
+			getMemberModel().setOrderField("add_ts");
+			getMemberModel().setOrderDirection("desc");
+		}
 		getMemberModel().getPageData("Member");
 		return render("member/index");
 	}
@@ -88,6 +92,33 @@ public class MemberController extends BaseController {
 	}
 	
 	public String topay(){
+		Member member = new Member();
+		member.setId(getId());
+		Flow flow = new Flow();
+		flow.setMember(member);
+		memberModel.setFlow(flow);
 		return render("/member/pay");
+	}
+	
+	public String dopay(){
+		getMemberModel().updatePay();
+		return successMsg("充值成功","member","closeCurrent");
+	}
+	
+	public String totake(){
+		Member member = new Member();
+		member.setId(getId());
+		Flow flow = new Flow();
+		flow.setMember(member);
+		memberModel.setFlow(flow);
+		return render("/member/take");
+	}
+	
+	public String dotake(){
+		if(getMemberModel().updateTake()){
+			return successMsg("提现成功","member","closeCurrent");
+		}else{
+			return errorMsg("提款失败，金额异常","member","closeCurrent");
+		}
 	}
 }

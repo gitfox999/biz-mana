@@ -70,11 +70,6 @@ orderField="memberModel.orderField" orderDirection="memberModel.orderDirection" 
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="${webUrl}/notices/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加公告</span></a></li>
-			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="memberModel.ids" href="${webUrl}/notices/0?_method=delete" class="delete"><span>批量删除</span></a></li>
-			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
-			<li class="line">line</li>
-		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
@@ -83,14 +78,13 @@ orderField="memberModel.orderField" orderDirection="memberModel.orderDirection" 
 			<tr>
 				<th width="22"><input type="checkbox" group="memberModel.ids" class="checkboxCtrl"></th>
 				<th width="100">会员名称</th>
-				<th width="100">电话</th>
-				<th width="160">银行卡号</th>
-				<th width="100">开户行</th>
-				<th width="60">实名</th>
-				<th width="60"  orderField="money">余额</th>
-				<th width="120" orderField="addTs" class="desc">注册时间</th>
-				<th width="120" orderField="updateTs">最后修改时间</th>
-				<th width="50">操作</th>
+				<th width="150">电话</th>
+				<th width="200">银行卡号</th>
+				<th width="150">开户行</th>
+				<th width="100">实名</th>
+				<th width="100" orderField="money">余额</th>
+				<th width="150" orderField="addTs">注册时间</th>
+				<th width="90">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -105,9 +99,9 @@ orderField="memberModel.orderField" orderDirection="memberModel.orderDirection" 
 				<td>${bm.trueName}</td>
 				<td><fmt:formatNumber value="${bm.money/100}" pattern="0.00"/></td>
 				<td>${bm.addTs}</td>
-				<td>${bm.updateTs}</td>
 				<td>
-					<a title="${bm.name}---充值" target="dialog" width="800" height="480" href="${webUrl}/mana/member/${bm.id}/topay" rel="pay_edit" class="btnEdit">充值</a>
+					<a title="${bm.name}---充值" target="dialog" width="800" height="480" href="${webUrl}/mana/member/${bm.id}/topay" rel="pay_edit">充值</a>
+					<a title="${bm.name}---提值" target="dialog" width="800" height="480" href="${webUrl}/mana/member/${bm.id}/totake" rel="take_edit">提现</a>
 				</td>
 			</tr>
 			</c:forEach>		

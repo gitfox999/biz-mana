@@ -2,27 +2,27 @@
     pageEncoding="UTF-8"%>
 
 <div class="pageContent">
-	<form method="post" id="payForm" action="${webUrl}/mana/member/${id}/dopay" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<form method="post" id="payForm" action="${webUrl}/mana/member/${id}/dotake" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<input name="memberModel.flow.member.id" type="hidden" value="${memberModel.flow.member.id}"/>
 			<div class="pageFormContent" layoutH="56">
 			<p>
-				<label>充值金额：</label>
+				<label>提现金额：</label>
 				<input name="memberModel.flow.money" class="required" type="text" size="30" value="${memberModel.flow.money}"/>
 			</p>
 			<p>
-				<label>打款卡号：</label>
+				<label>出款卡号：</label>
 				<input name="memberModel.flow.fromcard" class="required" type="text" size="30" value="${memberModel.flow.fromcard}"/>
 			</p>
 			<p>
-				<label>打款银行：</label>
+				<label>出款银行：</label>
 				<input name="memberModel.flow.frombank" class="required" type="text" size="30" value="${memberModel.flow.frombank}"/>
 			</p>
 			<p>
-				<label>入账卡号：</label>
+				<label>打入卡号：</label>
 				<input name="memberModel.flow.tocard" class="required" type="text" size="30" value="${memberModel.flow.tocard}"/>
 			</p>
 			<p>
-				<label>入账银行：</label>
+				<label>打入银行：</label>
 				<input name="memberModel.flow.tobank" class="required" type="text" size="30" value="${memberModel.flow.tobank}"/>
 			</p>
 			<p>
@@ -40,7 +40,7 @@
 </div>
 <script>
 function doPay(){
-	alertMsg.confirm("确定要充值吗？", {
+	alertMsg.confirm("确定要提现吗？", {
 		okCall: function(){
 			$("#payForm").submit();
 		}

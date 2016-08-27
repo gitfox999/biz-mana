@@ -56,15 +56,16 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 		</ul>
 	</div>
 <%-- ===================修改table显示内容===================== --%>
-	<table class="table" layoutH="137">
+	<table class="table" layoutH="162">
 		<thead>
 			<tr>
-				<th width="100">开奖期号</th>
+				<th width="100" orderField="qihao">开奖期号</th>
 				<th width="100">开奖号码</th>
-				<th width="100">总投注额</th>
-				<th width="100">盈利</th>
-				<th width="80">盈利百分比</th>
-				<th width="150">开奖时间</th>
+				<th width="100" orderField="income">总投注额</th>
+				<th width="100" orderField="allwin">盈利</th>
+				<th width="100" >赔付</th>
+				<th width="80" orderField="rate">盈利百分比</th>
+				<th width="150" orderField="time">开奖时间</th>
 				<th width="350" >投注时间</th>
 				<!-- <th width="50">操作</th> -->
 			</tr>
@@ -75,9 +76,10 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 			<tr target="bm_id" rel="${bm.id}">
 				<td>${bm.qihao}</td>			   
 				<td>${bm.no}</td>			   
-				<td><fmt:formatNumber value="${bm.income/100}" pattern="0.00"/></td>			   
-				<td><fmt:formatNumber value="${bm.allwin/100}" pattern="0.00"/></td>
-				<td><fmt:formatNumber value="${bm.rate/100}" pattern="0.00"/></td>
+				<td style="text-align: right;"><fmt:formatNumber value="${bm.income/100}" pattern="0.00"/></td>			   
+				<td style="text-align: right;"><fmt:formatNumber value="${bm.allwin/100}" pattern="0.00"/></td>
+				<td style="text-align: right;"><fmt:formatNumber value="${(bm.income-bm.allwin)/100}" pattern="0.00"/></td>
+				<td style="text-align: right;"><fmt:formatNumber value="${bm.rate/100}" pattern="0.00"/></td>
 				<td><fmt:formatDate value="${bm.time }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td><fmt:formatDate value="${bm.stime }" pattern="yyyy-MM-dd HH:mm:ss"/>至<fmt:formatDate value="${bm.etime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<%-- <td>
@@ -87,6 +89,24 @@ orderField="sscModel.orderField" orderDirection="sscModel.orderDirection" method
 			</c:forEach>		
 		</tbody>
 	</table>
+	<div class="panelBar">
+	<table class="table">
+		<thead>
+			<tr>
+				<th width="100">合计</th>
+				<th width="100"></th>
+				<th width="100" style="text-align: right;"><fmt:formatNumber value="${sscModel.sum[0]/100}" pattern="0.00"/></th>
+				<th width="100" style="text-align: right;"><fmt:formatNumber value="${sscModel.sum[1]/100}" pattern="0.00"/></th>
+				<th width="100" style="text-align: right;"><fmt:formatNumber value="${(sscModel.sum[0]-sscModel.sum[1])/100}" pattern="0.00"/></th>
+				<th width="80"></th>
+				<th width="150"></th>
+				<th width="350"></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
 <%-- ===================修改table显示内容===================== --%>
 	<div class="panelBar">
 		<div class="pages">
