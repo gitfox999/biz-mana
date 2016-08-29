@@ -9,16 +9,16 @@
 			<input name="earnrateModel.earnRate.id" type="hidden" value="${earnrateModel.earnRate.id}"/>
 			<div class="pageFormContent" layoutH="56">
 			<p>
-				<label>大于：</label>
+				<label>大于(%)：</label>
 				<input name="earnrateModel.earnRate.efrom" class="required"  type="text" size="30" value="${earnrateModel.earnRate.efrom}"/>
 			</p>
 			<p>
-				<label>小于：</label>
+				<label>小于(%)：</label>
 				<input name="earnrateModel.earnRate.eend" class="required" type="text" size="30" value="${earnrateModel.earnRate.eend}"/>
 			</p>
 			<p>
 				<label>优先级：</label>
-				<input name="earnrateModel.earnRate.sort" type="text" size="30" value="${earnrateModel.earnRate.sort}"/>
+				<input name="earnrateModel.earnRate.sort" class="required" type="text" size="30" value="${earnrateModel.earnRate.sort}"/>
 			</p>
 			</div>
 			<div class="formBar">

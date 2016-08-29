@@ -23,6 +23,7 @@ public class Member implements java.io.Serializable {
 	private String pwd;
 	private Date addTs;
 	private Date updateTs;
+	private Integer ocount;
 	private Set<Flow> flows = new HashSet<Flow>(0);
 
 	public Member() {
@@ -116,5 +117,12 @@ public class Member implements java.io.Serializable {
 		this.flows = flows;
 	}
 
+	public Integer getOcount() {
+		return ocount;
+	}
+
+	public void setOcount(Integer ocount) {
+		this.ocount = ocount;
+	}
 	
 }

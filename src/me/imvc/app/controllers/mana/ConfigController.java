@@ -22,6 +22,8 @@ public class ConfigController extends BaseController {
 
 	@Override
 	public String index() {
+		getConfigModel().setOrderField("id");
+		getConfigModel().setOrderDirection("asc");
 		getConfigModel().getPageData("Config");
 		return render("config/index");
 	}

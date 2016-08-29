@@ -35,6 +35,9 @@
         <property name="updateTs" type="timestamp">
             <column name="update_ts" length="19" />
         </property>
+        <property name="ocount" type="java.lang.Integer">
+            <column name="ocount" />
+        </property>
         <set name="flows" table="flow" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="memid" />

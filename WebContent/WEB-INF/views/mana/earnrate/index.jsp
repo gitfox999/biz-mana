@@ -46,7 +46,6 @@ orderField="earnrateModel.orderField" orderDirection="earnrateModel.orderDirecti
 		<ul class="toolBar">
 			<li><a class="add" href="${webUrl}/mana/earnrate/new" target="dialog" width="860" height="460" rel="notices_new"><span>添加</span></a></li>
 			<li><a title="确实要删除这些记录吗?" target="selectedTodo" rel="earnrateModel.ids" href="${webUrl}/mana/earnrate/0?_method=delete" class="delete"><span>批量删除</span></a></li>
-			<li><a class="edit" href="${webUrl}/notices/{data_id}/edit" rel="notices_edit"  target="dialog" width="800" height="480" warn="请选择一个用户"><span>修改</span></a></li>
 			<li class="line">line</li>
 		<%-- 	<li><a class="icon" href="${webUrl}/notices.xls" target="dwzExport" targetType="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li> --%>
 		</ul>
@@ -56,8 +55,8 @@ orderField="earnrateModel.orderField" orderDirection="earnrateModel.orderDirecti
 		<thead>
 			<tr>
 				<th width="22"><input type="checkbox" group="earnrateModel.ids" class="checkboxCtrl"></th>
-				<th width="100">大于</th>
-				<th width="100">小于</th>
+				<th width="100">大于(%)</th>
+				<th width="100">小于(%)</th>
 				<th width="60" orderField="sort" class="asc">优先级</th>
 				<th width="150">操作</th>
 			</tr>
