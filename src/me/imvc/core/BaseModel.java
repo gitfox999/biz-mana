@@ -29,11 +29,11 @@ public abstract class BaseModel{
 	// 分页变量
 	private int numPerPage = 20;// 默认每页显示20条
 	private int pageNum = 1;// 开始第一页
-	private long totalCount;
-	private String orderDirection;
-	private String orderField;
-	private double[] sum;
-	private String[] sumField;
+	private long totalCount;//查询返回的有多少条记录
+	private String orderDirection;//升序排序还是降序排序
+	private String orderField;//根据哪一列进行排序
+	private double[] sum;//汇总例的值
+	private String[] sumField;//汇总例
 
 	// 分页变量
 
@@ -241,7 +241,6 @@ public abstract class BaseModel{
 							.replace("_lt", "<").replace("_gt", ">")
 							.replace("_le", "<=").replace("_ge", ">=").replace("_date", "FUNCTION(\'date_format\',\'")
 							.replace("_string", "\'").replace("_number", " ");
-					
 					if (field.charAt(field.length() - 1) == '\'') {
 						if(field.charAt(field.length() - 2) == ','){
 							field += value_a[0] + "\', \'%Y-%m-%d %H:%i:%s\')";
@@ -311,12 +310,7 @@ public abstract class BaseModel{
 
 	public long getCount(String tableName, String where ,String isAnd) {
 		String sql = "select count(*) from " + tableName + " "+isAnd+" " + where;
-		return ((Long) this
-				.getHibernateTemplate()
-				.getSession()
-				.createQuery(
-						sql)
-				.iterate().next()).longValue();
+		return ((Long) this.getHibernateTemplate().getSession().createQuery(sql).iterate().next()).longValue();
 	}
 	
 	public double[] getSum(String tableName, String where ,String isAnd) {
